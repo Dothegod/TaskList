@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,14 +21,65 @@ namespace TaskList
     /// </summary>
     public partial class MainWindow : Window
     {
+        internal class User32
+        {
+            public const int SE_SHUTDOWN_PRIVILEGE = 0x13;
+
+            [DllImport("user32.dll")]
+            public static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+            [DllImport("user32.dll")]
+            public static extern IntPtr SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
+            [DllImport("user32.dll")]
+            public static extern bool SetWindowPos(IntPtr hWnd, int hWndInsertAfter, int X, int Y, int cx,
+                int cy, uint uFlags);
+        }
+
         public MainWindow()
         {
             InitializeComponent();
+            Window win = System.Windows.Window.GetWindow(this);
+            this.Left = SystemParameters.PrimaryScreenWidth - this.Width;
+            this.Top = 0;
+            AddShell();
+//             this.ResizeMode = ResizeMode.NoResize;
+            
+
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            Pool.Children.Add(new TaskShell());
+            AddShell();
         }
+
+        private void AddShell()
+        {
+            Pool.Children.Add(new TaskShell(DelTaskShell));
+        }
+
+        private void DelTaskShell(UIElement shell)
+        {
+            Pool.Children.Remove(shell);
+        }
+        //private void SendFormToBack() //防止窗口最小化
+        //{
+        //    try
+        //    {
+        //        if (Environment.OSVersion.Version.Major < 6)
+        //        {
+        //            base.SendToBack();
+        //            IntPtr hWndNewParent = User32.FindWindow("Progman", null);
+        //            User32.SetParent(base.Handle, hWndNewParent);
+        //        }
+        //        else
+        //        {
+        //            User32.SetWindowPos(base.Handle, 1, 0, 0, 0, 0, User32.SE_SHUTDOWN_PRIVILEGE);
+        //        }
+        //    }
+        //    catch (ApplicationException exx)
+        //    {
+        //        MessageBox.Show(this, exx.Message, "Pin to Desktop");
+        //    }
+        //}
+
     }
 }

@@ -20,10 +20,11 @@ namespace TaskList
     /// </summary>
     public partial class TaskShell : UserControl
     {
-        public TaskShell()
+        public TaskShell(DelTaskShell DelSelf)
         {
             InitializeComponent();
             AddTaskItem();
+            this.DelSelf = DelSelf;
         }
 
         private void AddTask_Click(object sender, RoutedEventArgs e)
@@ -39,6 +40,17 @@ namespace TaskList
         private void DelTask(UIElement item)
         {
             Pool.Children.Remove(item);
+            if (Pool.Children.Count == 0)
+            {
+                if (DelSelf != null)
+                {
+                    DelSelf((UIElement)this);
+                }
+            }
         }
+
+        public delegate void DelTaskShell(UIElement obj);
+        DelTaskShell DelSelf;
+
     }
 }

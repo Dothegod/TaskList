@@ -39,7 +39,7 @@ namespace TaskList
             }
         }
 
-        public delegate void DelTaskItem(UIElement sender);
+        public delegate void DelTaskItem(UIElement obj);
         public DelTaskItem DeleteSelf = null;
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
@@ -47,6 +47,7 @@ namespace TaskList
             {
                 DeleteSelf((UIElement)this);
             }
+            
                         
         }
 
