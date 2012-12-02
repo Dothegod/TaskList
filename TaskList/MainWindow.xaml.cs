@@ -40,26 +40,19 @@ namespace TaskList
             Window win = System.Windows.Window.GetWindow(this);
             this.Left = SystemParameters.PrimaryScreenWidth - this.Width;
             this.Top = 0;
-            AddShell();
 //             this.ResizeMode = ResizeMode.NoResize;
-            
-
         }
 
-        private void Add_Click(object sender, RoutedEventArgs e)
+        private void Window_Closing_1(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            AddShell();
+            TaskManager.Instance().SaveData(this.Frame);
         }
 
-        private void AddShell()
+        private void Window_Loaded_1(object sender, RoutedEventArgs e)
         {
-            Pool.Children.Add(new TaskShell(DelTaskShell));
+            TaskManager.Instance().LoadData(this.Frame);
         }
 
-        private void DelTaskShell(UIElement shell)
-        {
-            Pool.Children.Remove(shell);
-        }
         //private void SendFormToBack() //防止窗口最小化
         //{
         //    try

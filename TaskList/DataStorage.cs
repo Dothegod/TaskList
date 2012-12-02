@@ -7,13 +7,13 @@ using System.Xml;
 
 namespace TaskList
 {
-    struct TaskItemlInfo
+    public struct TaskItemlInfo
     {
         public string Content;
         public bool IsCompleted;
     }
 
-    struct TaskShellInfo
+    public struct TaskShellInfo
     {
         public string Name;
         public List<TaskItemlInfo> ItemList;
@@ -31,13 +31,13 @@ namespace TaskList
         const string Content = "Content";
 
 
-        XmlDocument xmlDoc = new XmlDocument();
         public DataStorage()
         {
-            xmlDoc.Load(Path);
         }
         public List<TaskShellInfo> GetData()
         {
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(Path);
             List<TaskShellInfo> TsList = new List<TaskShellInfo>();
             XmlNodeList list = xmlDoc.SelectNodes(string.Format("{0}/{1}",Root,TaskShell));
             foreach (XmlNode Node in list)
@@ -61,6 +61,11 @@ namespace TaskList
 
         public void SaveData(List<TaskShellInfo> Data)
         {
+            if (Data == null)
+            {
+                return;
+            }
+            XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.CreateXmlDeclaration("1.0", "utf-8", "yes");
             XmlNode rootNode = xmlDoc.CreateElement(Root);
 
@@ -88,9 +93,12 @@ namespace TaskList
                     IsCompletedAttribute.Value = ti.IsCompleted.ToString();
                     //xml节点附件属性
                     TaskItemNode.Attributes.Append(IsCompletedAttribute);
+                    TaskShellNode.AppendChild(TaskItemNode);
                 }
+                rootNode.AppendChild(TaskShellNode);
 
             }
+            xmlDoc.AppendChild(rootNode);
             xmlDoc.Save(Path);
         }
     }

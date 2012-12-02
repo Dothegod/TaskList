@@ -54,9 +54,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DataStorage.cs" />
+    <Compile Include="TaskFrame.xaml.cs">
+      <DependentUpon>TaskFrame.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TaskItem.xaml.cs">
       <DependentUpon>TaskItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TaskManager.cs" />
     <Compile Include="TaskShell.xaml.cs">
       <DependentUpon>TaskShell.xaml</DependentUpon>
     </Compile>
@@ -72,6 +76,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="TaskFrame.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="TaskItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -79,6 +87,10 @@
     <Page Include="TaskShell.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>

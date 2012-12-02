@@ -20,15 +20,15 @@ namespace TaskList
     /// </summary>
     public partial class TaskItem : UserControl
     {
-        public string Info
+        public string TaskContent
         {
             set
             {
-                TaskContent.Text = value;
+                m_TaskContent.Text = value;
             }
             get
             {
-                return TaskContent.Text;
+                return m_TaskContent.Text;
             }
         }
 
@@ -44,6 +44,11 @@ namespace TaskList
             }
         }
 
+        public TaskItem()
+        {
+            InitializeComponent();
+        }
+
         public TaskItem(DelTaskItem Deletefun)
         {
             InitializeComponent();
@@ -52,7 +57,7 @@ namespace TaskList
 
         private void TextBox_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
         {
-            TaskContent.IsReadOnly = false;
+            m_TaskContent.IsReadOnly = false;
             e.Handled = true;
         }
 
@@ -60,7 +65,7 @@ namespace TaskList
         {
             if (e.Key == Key.Enter)
             {
-                TaskContent.IsReadOnly = true;
+                m_TaskContent.IsReadOnly = true;
             }
         }
 
@@ -78,7 +83,7 @@ namespace TaskList
         private void CheckBox_Click_1(object sender, RoutedEventArgs e)
         {
             CheckBox cb = sender as CheckBox;
-            TaskContent.IsEnabled = !((bool)cb.IsChecked);
+            m_TaskContent.IsEnabled = !((bool)cb.IsChecked);
         }
 
     }

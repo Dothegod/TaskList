@@ -13,7 +13,7 @@ namespace TaskList
     /// </summary>
     public partial class App : Application
     {
-        List<TaskShellInfo> tsList;
+        public static List<TaskShellInfo> tsList = null;
         private void Application_Startup_1(object sender, StartupEventArgs e)
         {
             try
@@ -23,12 +23,16 @@ namespace TaskList
             }
             catch (System.Exception ex)
             {
-            	
+                MessageBox.Show("数据文件损坏，无法读取！");
             }
         }
 
         private void Application_Exit_1(object sender, ExitEventArgs e)
         {
+            if (tsList == null)
+            {
+                MessageBox.Show("数据文件损坏，无法保存!");
+            }
             DataStorage ds = new DataStorage();
             ds.SaveData(tsList);
         }

@@ -20,6 +20,27 @@ namespace TaskList
     /// </summary>
     public partial class TaskShell : UserControl
     {
+        public string TaskShellName
+        {
+            set
+            {
+                groupboxShell.Header = value;
+            }
+            get
+            {
+                return (string)groupboxShell.Header;
+            }
+        }
+        public void AddTask(TaskItem t)
+        {
+            t.DeleteSelf = DelTask;            
+            Pool.Children.Add(t);
+        }
+        public TaskShell()
+        {
+            InitializeComponent();
+        }
+
         public TaskShell(DelTaskShell DelSelf)
         {
             InitializeComponent();
@@ -50,7 +71,7 @@ namespace TaskList
         }
 
         public delegate void DelTaskShell(UIElement obj);
-        DelTaskShell DelSelf;
+        public DelTaskShell DelSelf;
 
         private void GroupBox_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
         {
@@ -64,6 +85,10 @@ namespace TaskList
                 textboxHeader.Visibility = Visibility.Collapsed;
                 groupboxShell.Header = textboxHeader.Text;
             }
+        }
+        public UIElementCollection TaskItemList()
+        {
+            return Pool.Children;
         }
 
     }

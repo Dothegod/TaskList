@@ -2,14 +2,13 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:TaskList" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="TaskList.MainWindow"
-        Title="TaskList" Width="525" ShowInTaskbar="False" ShowActivated="False" d:DesignHeight="106" SizeToContent="Height">
+        Title="TaskList" Width="525" ShowInTaskbar="False" ShowActivated="False" d:DesignHeight="106" SizeToContent="Height" Closing="Window_Closing_1" Loaded="Window_Loaded_1">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <StackPanel x:Name="Pool"  Grid.Row="0">
-        </StackPanel>
-        <Button x:Name="Add" Content="Add a Task Shell" VerticalAlignment="Bottom" HorizontalAlignment="Left" Grid.Row="1" Click="Add_Click"/>
+        <local:TaskFrame x:Name="Frame"/>
+
     </Grid>
 </Window>
