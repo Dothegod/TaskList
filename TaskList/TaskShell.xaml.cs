@@ -52,5 +52,19 @@ namespace TaskList
         public delegate void DelTaskShell(UIElement obj);
         DelTaskShell DelSelf;
 
+        private void GroupBox_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
+        {
+            textboxHeader.Visibility = Visibility.Visible;
+        }
+
+        private void textboxHeader_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                textboxHeader.Visibility = Visibility.Collapsed;
+                groupboxShell.Header = textboxHeader.Text;
+            }
+        }
+
     }
 }

@@ -28,7 +28,8 @@ namespace TaskList
 
         private void TextBox_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
         {
-            TaskContent.IsReadOnly = false;            
+            TaskContent.IsReadOnly = false;
+            e.Handled = true;
         }
 
         private void TaskContent_KeyDown(object sender, KeyEventArgs e)
@@ -47,7 +48,6 @@ namespace TaskList
             {
                 DeleteSelf((UIElement)this);
             }
-            
                         
         }
 
@@ -56,5 +56,6 @@ namespace TaskList
             CheckBox cb = sender as CheckBox;
             TaskContent.IsEnabled = !((bool)cb.IsChecked);
         }
+
     }
 }

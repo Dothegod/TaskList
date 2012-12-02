@@ -5,14 +5,17 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <StackPanel Name="Pool" Grid.Row="0">
-            
-        </StackPanel>
-        <Button Name="Add" Content="Add a Task" Grid.Row="1" Click="AddTask_Click"/>
-    </Grid>
+    <GroupBox x:Name="groupboxShell" Header="Task Shell" MouseDoubleClick="GroupBox_MouseDoubleClick_1">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel Name="Pool" Grid.Row="0">
+
+            </StackPanel>
+            <Button Name="Add" Content="Add a Task" Grid.Row="1" Click="AddTask_Click"/>
+            <TextBox x:Name="textboxHeader" HorizontalAlignment="Left" Height="23" Margin="0,-14,0,250" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Bottom" Width="120" KeyDown="textboxHeader_KeyDown" Visibility="Collapsed"/>
+        </Grid>
+    </GroupBox>
 </UserControl>

@@ -12,7 +12,7 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <CheckBox Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10" Click="CheckBox_Click_1"/>
-        <TextBox x:Name="TaskContent"  Grid.Column="1" VerticalContentAlignment="Center" Text="It is a test" IsReadOnly="True" MouseDoubleClick="TextBox_MouseDoubleClick_1" KeyDown="TaskContent_KeyDown"/>
+        <TextBox x:Name="TaskContent"  Grid.Column="1" VerticalContentAlignment="Center" Text="It is a test"  PreviewMouseDoubleClick="TextBox_MouseDoubleClick_1" IsReadOnly="True" KeyDown="TaskContent_KeyDown"/>
         <Button Grid.Column="2" Content="DEl" HorizontalAlignment="Right" Click="Button_Click_1"/>
     </Grid>
 </UserControl>
