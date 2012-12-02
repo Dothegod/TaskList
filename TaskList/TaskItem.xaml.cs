@@ -20,6 +20,30 @@ namespace TaskList
     /// </summary>
     public partial class TaskItem : UserControl
     {
+        public string Info
+        {
+            set
+            {
+                TaskContent.Text = value;
+            }
+            get
+            {
+                return TaskContent.Text;
+            }
+        }
+
+        public bool IsCompleted
+        {
+            set
+            {
+                m_IsCompleted.IsChecked = value;
+            }
+            get
+            {
+                return (bool)m_IsCompleted.IsChecked;
+            }
+        }
+
         public TaskItem(DelTaskItem Deletefun)
         {
             InitializeComponent();

@@ -53,6 +53,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DataStorage.cs" />
     <Compile Include="TaskItem.xaml.cs">
       <DependentUpon>TaskItem.xaml</DependentUpon>
     </Compile>

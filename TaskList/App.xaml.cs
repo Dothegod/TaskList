@@ -13,5 +13,24 @@ namespace TaskList
     /// </summary>
     public partial class App : Application
     {
+        List<TaskShellInfo> tsList;
+        private void Application_Startup_1(object sender, StartupEventArgs e)
+        {
+            try
+            {
+	            DataStorage ds = new DataStorage();
+	            tsList = ds.GetData();
+            }
+            catch (System.Exception ex)
+            {
+            	
+            }
+        }
+
+        private void Application_Exit_1(object sender, ExitEventArgs e)
+        {
+            DataStorage ds = new DataStorage();
+            ds.SaveData(tsList);
+        }
     }
 }
