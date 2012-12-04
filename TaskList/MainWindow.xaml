@@ -4,6 +4,7 @@
         xmlns:local="clr-namespace:TaskList" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="TaskList.MainWindow"
         Title="TaskList" Width="525" ShowActivated="False" d:DesignHeight="106" SizeToContent="Height" Closing="Window_Closing_1" Loaded="Window_Loaded_1" WindowStyle="None" Topmost="True" ShowInTaskbar="False" ResizeMode="NoResize">
     <Grid>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"  Margin="25,0,0,0" FontSize="18"/>
         <Expander>
             <local:TaskFrame x:Name="Frame" Grid.Column="1"/>
         </Expander>
