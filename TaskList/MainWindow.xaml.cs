@@ -21,7 +21,6 @@ namespace TaskList
     /// </summary>
     public partial class MainWindow : Window
     {
-        double OriWidth = 0;
         internal class User32
         {
             public const int SE_SHUTDOWN_PRIVILEGE = 0x13;
@@ -41,7 +40,7 @@ namespace TaskList
             Window win = System.Windows.Window.GetWindow(this);
             this.Left = SystemParameters.PrimaryScreenWidth - this.Width;
             this.Top = 0;
-//             this.ResizeMode = ResizeMode.NoResize;
+            this.ResizeMode = ResizeMode.NoResize;
         }
 
         private void Window_Closing_1(object sender, System.ComponentModel.CancelEventArgs e)
@@ -59,36 +58,28 @@ namespace TaskList
             if (Frame.Visibility != Visibility.Collapsed)
             {
                 Frame.Visibility = Visibility.Collapsed;
-                OriWidth = this.Width;
-                this.Width = btnExpend.ActualWidth;
+                this.Width = ButtonPanel.ActualWidth;
             } 
             else
             {
                 Frame.Visibility = Visibility.Visible;
-                this.Width = OriWidth;
+                this.Width = Frame.ActualWidth;
             }
         }
 
-        //private void SendFormToBack() //防止窗口最小化
-        //{
-        //    try
-        //    {
-        //        if (Environment.OSVersion.Version.Major < 6)
-        //        {
-        //            base.SendToBack();
-        //            IntPtr hWndNewParent = User32.FindWindow("Progman", null);
-        //            User32.SetParent(base.Handle, hWndNewParent);
-        //        }
-        //        else
-        //        {
-        //            User32.SetWindowPos(base.Handle, 1, 0, 0, 0, 0, User32.SE_SHUTDOWN_PRIVILEGE);
-        //        }
-        //    }
-        //    catch (ApplicationException exx)
-        //    {
-        //        MessageBox.Show(this, exx.Message, "Pin to Desktop");
-        //    }
-        //}
-
+        private void btnDrag_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.ResizeMode != ResizeMode.CanResize)
+            {
+                this.ResizeMode = ResizeMode.CanResize;
+                this.WindowStyle = WindowStyle.SingleBorderWindow;
+            } 
+            else
+            {
+                this.ResizeMode = ResizeMode.NoResize;
+                this.WindowStyle = WindowStyle.None;
+                this.Height = ButtonPanel.ActualHeight + Frame.ActualHeight;
+            }
+        }
     }
 }
