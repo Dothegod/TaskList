@@ -21,6 +21,7 @@ namespace TaskList
     /// </summary>
     public partial class MainWindow : Window
     {
+        double OriWidth = 0;
         internal class User32
         {
             public const int SE_SHUTDOWN_PRIVILEGE = 0x13;
@@ -51,6 +52,21 @@ namespace TaskList
         private void Window_Loaded_1(object sender, RoutedEventArgs e)
         {
             TaskManager.Instance().LoadData(this.Frame);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (Frame.Visibility != Visibility.Collapsed)
+            {
+                Frame.Visibility = Visibility.Collapsed;
+                OriWidth = this.Width;
+                this.Width = btnExpend.ActualWidth;
+            } 
+            else
+            {
+                Frame.Visibility = Visibility.Visible;
+                this.Width = OriWidth;
+            }
         }
 
         //private void SendFormToBack() //防止窗口最小化

@@ -75,6 +75,7 @@ namespace TaskList
 
         private void GroupBox_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
         {
+            textboxHeader.Text = (string)groupboxShell.Header;
             textboxHeader.Visibility = Visibility.Visible;
         }
 
