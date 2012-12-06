@@ -14,7 +14,7 @@
             <StackPanel Name="Pool" Grid.Row="0">
 
             </StackPanel>
-            <Button Name="Add" Content="Add a Task" Grid.Row="1" Click="AddTask_Click"/>
+            <Button Name="Add" Content="Add a Task" Grid.Row="1" Click="AddTask_Click" Margin="0,2"/>
             <TextBox x:Name="textboxHeader" HorizontalAlignment="Left" Height="23" Margin="0,-14,0,250" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="120" KeyDown="textboxHeader_KeyDown" Visibility="Collapsed"/>
         </Grid>
     </GroupBox>

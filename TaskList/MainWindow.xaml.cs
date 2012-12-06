@@ -34,6 +34,7 @@ namespace TaskList
                 int cy, uint uFlags);
         }
 
+        private Window1 SettingWin;
         public MainWindow()
         {
             InitializeComponent();
@@ -59,7 +60,7 @@ namespace TaskList
             {
                 Frame.Visibility = Visibility.Collapsed;
                 this.Width = ButtonPanel.ActualWidth;
-            } 
+            }
             else
             {
                 Frame.Visibility = Visibility.Visible;
@@ -73,13 +74,22 @@ namespace TaskList
             {
                 this.ResizeMode = ResizeMode.CanResize;
                 this.WindowStyle = WindowStyle.SingleBorderWindow;
-            } 
+            }
             else
             {
                 this.ResizeMode = ResizeMode.NoResize;
                 this.WindowStyle = WindowStyle.None;
                 this.Height = ButtonPanel.ActualHeight + Frame.ActualHeight;
             }
+        }
+
+        private void btnConfig_Click(object sender, RoutedEventArgs e)
+        {
+            SettingWin = new Window1();
+            SettingWin.Left = this.Left + this.Width - SettingWin.Width;
+            SettingWin.Top = this.Top + this.Height;
+            SettingWin.SetWindow(this);
+            SettingWin.Show();
         }
     }
 }

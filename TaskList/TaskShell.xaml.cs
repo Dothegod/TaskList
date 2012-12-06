@@ -55,7 +55,9 @@ namespace TaskList
 
         private void AddTaskItem()
         {
-            Pool.Children.Add(new TaskItem(DelTask));
+            TaskItem item = new TaskItem(DelTask);
+            item.Margin = new System.Windows.Thickness(2);
+            Pool.Children.Add(item);
         }
 
         private void DelTask(UIElement item)

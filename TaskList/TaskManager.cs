@@ -36,6 +36,7 @@ namespace TaskList
                 foreach (TaskItemlInfo tiInfo in tsInfo.ItemList)
                 {
                     TaskItem ti = new TaskItem();
+                    ti.Margin = new System.Windows.Thickness(2);
                     ti.TaskContent = tiInfo.Content;
                     ti.IsCompleted = tiInfo.IsCompleted;
                     ts.AddTask(ti);
