@@ -76,6 +76,7 @@ namespace TaskList
         {
             TaskShellFrame.Visibility = Visibility.Collapsed;
             this.Width = ButtonPanel.ActualWidth;
+            TaskManager.Instance().SaveData(TaskShellFrame);
         }
 
         private void btnDrag_Click(object sender, RoutedEventArgs e)
