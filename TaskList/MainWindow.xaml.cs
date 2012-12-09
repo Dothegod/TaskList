@@ -46,26 +46,36 @@ namespace TaskList
 
         private void Window_Closing_1(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            TaskManager.Instance().SaveData(this.Frame);
+            TaskManager.Instance().SaveData(this.TaskShellFrame);
         }
 
         private void Window_Loaded_1(object sender, RoutedEventArgs e)
         {
-            TaskManager.Instance().LoadData(this.Frame);
+            TaskManager.Instance().LoadData(this.TaskShellFrame);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (Frame.Visibility != Visibility.Collapsed)
+            if (TaskShellFrame.Visibility != Visibility.Collapsed)
             {
-                Frame.Visibility = Visibility.Collapsed;
-                this.Width = ButtonPanel.ActualWidth;
+                CollapseTaskFrame();
             }
             else
             {
-                Frame.Visibility = Visibility.Visible;
-                this.Width = Frame.ActualWidth;
+                ExpandTaskFrame();
             }
+        }
+
+        private void ExpandTaskFrame()
+        {
+            TaskShellFrame.Visibility = Visibility.Visible;
+            this.Width = TaskShellFrame.ActualWidth;
+        }
+
+        private void CollapseTaskFrame()
+        {
+            TaskShellFrame.Visibility = Visibility.Collapsed;
+            this.Width = ButtonPanel.ActualWidth;
         }
 
         private void btnDrag_Click(object sender, RoutedEventArgs e)
@@ -79,7 +89,7 @@ namespace TaskList
             {
                 this.ResizeMode = ResizeMode.NoResize;
                 this.WindowStyle = WindowStyle.None;
-                this.Height = ButtonPanel.ActualHeight + Frame.ActualHeight;
+                this.Height = ButtonPanel.ActualHeight + TaskShellFrame.ActualHeight;
             }
         }
 
@@ -91,5 +101,6 @@ namespace TaskList
             SettingWin.SetWindow(this);
             SettingWin.Show();
         }
+
     }
 }
