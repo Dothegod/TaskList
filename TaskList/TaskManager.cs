@@ -69,6 +69,8 @@ namespace TaskList
                 }
                 tsList.Add(tsInfo);
             }
+            DataStorage ds = new DataStorage();
+            ds.SaveData(tsList);
         }
         private static TaskManager m_Instance = null;
     }

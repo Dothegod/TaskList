@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" d:DesignWidth="354.328" d:DesignHeight="36.493">
+             mc:Ignorable="d" d:DesignWidth="354.328" d:DesignHeight="36.493" PreviewMouseDoubleClick="UserControl_PreviewMouseDoubleClick_1">
     
     <Grid>
         <Grid.ColumnDefinitions>
@@ -12,7 +12,7 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <CheckBox Name="m_IsCompleted"  Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10" Click="CheckBox_Click_1"/>
-        <TextBox x:Name="m_TaskContent"  Grid.Column="1" VerticalContentAlignment="Center"  PreviewMouseDoubleClick="TextBox_MouseDoubleClick_1" IsReadOnly="True" KeyDown="TaskContent_KeyDown"/>
+        <TextBox x:Name="m_TaskContent"  Grid.Column="1" VerticalContentAlignment="Center"  PreviewMouseDoubleClick="TextBox_MouseDoubleClick_1" IsReadOnly="True" KeyDown="TaskContent_KeyDown" Background="{x:Null}"/>
         <Button Grid.Column="2" Content="DEl" HorizontalAlignment="Right" Click="Button_Click_1"/>
     </Grid>
 </UserControl>

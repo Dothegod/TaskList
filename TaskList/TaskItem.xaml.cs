@@ -83,7 +83,12 @@ namespace TaskList
         private void CheckBox_Click_1(object sender, RoutedEventArgs e)
         {
             CheckBox cb = sender as CheckBox;
-            m_TaskContent.IsEnabled = !((bool)cb.IsChecked);
+            m_TaskContent.IsHitTestVisible = !((bool)cb.IsChecked);
+        }
+
+        private void UserControl_PreviewMouseDoubleClick_1(object sender, MouseButtonEventArgs e)
+        {
+            e.Handled = true;
         }
 
     }
