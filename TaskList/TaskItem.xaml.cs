@@ -80,16 +80,17 @@ namespace TaskList
                         
         }
 
-        private void CheckBox_Click_1(object sender, RoutedEventArgs e)
-        {
-            CheckBox cb = sender as CheckBox;
-            m_TaskContent.IsHitTestVisible = !((bool)cb.IsChecked);
-        }
-
         private void UserControl_PreviewMouseDoubleClick_1(object sender, MouseButtonEventArgs e)
         {
             e.Handled = true;
         }
+
+        private void m_IsCompleted_IsCheckedChage(object sender, RoutedEventArgs e)
+        {
+            m_TaskContent.IsHitTestVisible = !((bool)m_IsCompleted.IsChecked);
+            this.Opacity = (m_IsCompleted.IsChecked == true) ? 0.5 : 1;
+        }
+
 
     }
 }

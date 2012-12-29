@@ -22,7 +22,7 @@ namespace TaskList
 	            DataStorage ds = new DataStorage();
 	            tsList = ds.GetData();
             }
-            catch (System.Exception ex)
+            catch
             {
                 MessageBox.Show("数据文件损坏，无法读取！");
             }
